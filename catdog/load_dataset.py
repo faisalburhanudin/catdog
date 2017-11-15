@@ -31,7 +31,7 @@ def data_generator(batch=32):
     total_loop = int(len(files) / batch)
     while True:
         for i in range(total_loop):
-            file = files[i * batch:(i + 1) * 32]
+            file = files[i * batch:(i + 1) * batch]
 
             images = np.array([resize_image(os.path.join(path, i), sz=(32, 32)) for i in file])
             labels = np.array(list(map(to_categorical, file)))
