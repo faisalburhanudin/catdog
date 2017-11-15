@@ -1,10 +1,12 @@
 from keras.layers import Input, Conv2D, Flatten, Dense, BatchNormalization, Activation, MaxPooling2D
 from keras.models import Model
+
 from catdog import resnet
+from catdog.load_dataset import data_generator
 
 # model parameter
-shape = (32, 32, 3)  # cifar shape
-classes = 10  # cifar10 class
+shape = (32, 32, 3)
+classes = 2
 
 # MODEL
 inputs = Input(shape=shape)
@@ -21,3 +23,4 @@ x = Dense(classes, activation='softmax')(x)
 model = Model(inputs=inputs, outputs=x)
 model.summary()
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+model.fit_generator(data_generator(), steps_per_epoch=1000)
