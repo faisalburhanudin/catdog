@@ -1,3 +1,5 @@
 .idea
 .venv
 data
+saved_weight/
+predictions.csv
